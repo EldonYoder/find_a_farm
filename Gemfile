@@ -18,6 +18,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'nokogiri', '1.5.10'
+gem 'i18n', '0.6.9'
 
 group :test do 
 	gem "rspec-rails"
