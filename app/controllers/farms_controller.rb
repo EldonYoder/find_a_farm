@@ -1,0 +1,2 @@
+class FarmsController < ApplicationController
+end
