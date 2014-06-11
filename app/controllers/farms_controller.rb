@@ -6,6 +6,21 @@ class FarmsController < ApplicationController
 		@farm = Farm.find(params[:id])
 	end
 
+	#GET "/farms/:id/edit"
+	def edit
+		@farm = Farm.find(params[:id])
+	end
+
+	#PUT/PATCH "/farms/:id"
+	def update
+		@farm = Farm.find(params[:id])
+		if @farm.update_attributes(farm_params)
+			redirect_to farm_path(@farm), notice: "#{@farm.name} updated successfully."
+		else
+			render edit_farm_path(@farm), notice: "Error updating farm."
+		end
+	end
+
 	# GET "/farms/new" 
 	def new
 		@farm = Farm.new
