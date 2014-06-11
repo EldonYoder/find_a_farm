@@ -23,8 +23,9 @@
 = @farm.email_address
 
 %br
-- if current_user.id == @farm.user_id
-	= button_to "Edit this Farm", edit_farm_path(@farm), class: "btn btn-warning btn-lg"
-	%br
-	%br
+- if current_user	
+	- if current_user.id == @farm.user_id
+		= button_to "Edit this Farm", edit_farm_path(@farm), class: "btn btn-warning btn-lg"
+		%br
+		%br
 = render "/layouts/footer"
