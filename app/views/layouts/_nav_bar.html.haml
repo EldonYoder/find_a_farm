@@ -4,9 +4,8 @@
   .navbar-collapse.collapse.navbar-inverse-collapse
     %ul.nav.navbar-nav
       - if current_user
-        - if current_user
-          %li
-            %a{href: "/"} Your Farm
+        %li
+          %a{href: "/farms/new"} Add A Farm
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
         %li
