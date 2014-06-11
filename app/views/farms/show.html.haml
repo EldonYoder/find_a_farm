@@ -20,6 +20,10 @@
 
 .col-md-2
 	%h3= "General Info"
+	- if @links
+		%h4= "Find Us Elsewhere"
+		- @links.each do |l|
+			= link_to l.name, l.url, target: "_blank"
 	%h4= "Our Address"
 	= @farm.address
 	%h4= "Hours Open"
@@ -37,8 +41,37 @@
 	%h4= "Email"
 	= mail_to @farm.email_address
 
-- if current_user	
-	- if current_user.id == @farm.user_id
-		= button_to "Edit this Farm", edit_farm_path(@farm), method: "get", class: "btn btn-warning", id: "edit_farm_button"
+.col-md-8.col-md-offset-2
 
-= render "/layouts/footer"
+	- if current_user	
+		- if current_user.id == @farm.user_id
+			.edit_farm_button{id: "edit_farm_button"}
+				= button_to "Edit this Farm", edit_farm_path(@farm), method: "get", class: "btn btn-warning"
+				%br
+				%button{id: "farm_link_button", class: "btn btn-warning"}
+					Add Link to this Farm
+
+	= render "/layouts/footer"
+
+.mod_overlay{:id => "mod_overlay"}
+.add_new_link{:id => "add_new_link"}
+	.add_new_link_inside{:id => "add_new_link_inside"}
+		%h3 Add A Link to this Farm
+		= form_for Link.new do |l|
+			= l.hidden_field :farm_id, value: @farm.id
+			= l.label "Link Name"
+			%br
+			= "example: twitter, facebook, website"
+			%br
+			= l.text_field :name, class: "form-control"
+			%br
+			= l.label "Full URL"
+			%br
+			= "example: https://www.facebook.com/yourpage"
+			%br
+			= l.text_field :url, class: "form-control"
+			%br
+			= l.submit "Add Link", class: "btn btn-info btn-lg btn-block"
+			%br
+		%button.btn.btn-default.btn-lg.btn-block{:id => "close_new_q_modal"}
+			Close

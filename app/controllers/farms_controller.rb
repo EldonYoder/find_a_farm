@@ -12,6 +12,8 @@ class FarmsController < ApplicationController
 		  marker.infowindow "<a target='blank' href='https://www.google.com/maps/place/"+"#{farm.address}"+"'>Get Directions With Google Maps</a>"
 		  marker.json({ title: farm.name })
 		end
+
+		@links = @farm.links
 	end
 
 	#GET "/farms/:id/edit"

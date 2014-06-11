@@ -21,6 +21,7 @@
 class Farm < ActiveRecord::Base
 
 	belongs_to :user
+	has_many :links
 
 	validates_presence_of :name, :description, :address, :hours_open, :days_open, :months_open, :phone_num
 
