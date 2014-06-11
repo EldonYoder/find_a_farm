@@ -30,3 +30,17 @@
  	font-size: 16px;
  	opacity: .5;
  }
+
+ h4 {
+ 	margin-bottom: 0px!important;
+ }
+
+ #edit_farm_button {
+ 	position: fixed;
+ 	bottom: 20px;
+ 	left: 20px;
+ }
+
+ .directions_div {
+ 	text-align: center;
+ }
