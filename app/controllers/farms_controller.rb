@@ -4,10 +4,12 @@ class FarmsController < ApplicationController
 	#GET "/farms/:id"
 	def show
 		@farm = Farm.find(params[:id])
+		
+		#sets up hash for map marker
 		@hash = Gmaps4rails.build_markers(@farm) do |farm, marker|
 		  marker.lat farm.latitude
 		  marker.lng farm.longitude
-		  marker.infowindow farm.name
+		  marker.infowindow "<a target='blank' href='https://www.google.com/maps/place/"+"#{farm.address}"+"'>Get Directions With Google Maps</a>"
 		  marker.json({ title: farm.name })
 		end
 	end

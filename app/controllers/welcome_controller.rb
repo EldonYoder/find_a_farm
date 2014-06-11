@@ -1,6 +1,13 @@
 class WelcomeController < ApplicationController
+	
+	#GET "/"
 	def index
 		@recent_farms = Farm.last(10)
+		create_markers
+	end
+
+	# Creates all the markers for the farms... Used to on the map in the view.
+	def create_markers
 		@all_farms = Farm.all 
 		@hash = Gmaps4rails.build_markers(@all_farms) do |farm, marker|
 		  marker.lat farm.latitude
