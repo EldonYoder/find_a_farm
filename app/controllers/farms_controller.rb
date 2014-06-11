@@ -1,5 +1,5 @@
 class FarmsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, :except => [:show]
 
 	#GET "/farms/:id"
 	def show
