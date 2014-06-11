@@ -25,3 +25,9 @@ group :test do
 	gem "capybara"
 	gem "factory_girl_rails"
 end
+
+gem "geocoder"
+
+group :development do 
+	gem 'annotate', ">=2.6.0"
+end
