@@ -12,6 +12,7 @@
 #  last_sign_in_ip    :string(255)
 #  created_at         :datetime
 #  updated_at         :datetime
+#  name               :string(255)
 #
 # Indexes
 #
@@ -25,4 +26,6 @@ class User < ActiveRecord::Base
   has_many :farms
 
   devise :database_authenticatable, :registerable, :trackable, :validatable
+  validates_presence_of :name
+  
 end
