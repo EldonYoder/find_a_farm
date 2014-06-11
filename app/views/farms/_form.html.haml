@@ -1,0 +1,36 @@
+= f.label "What is the name of your farm?"
+%br
+= f.text_field :name, class: "form-control"
+%br
+= f.label "Give a short description of your farm."
+%br
+= f.text_area :description, class: "form-control"
+%br
+= f.label "What is the address of the farm?"
+%br
+= f.text_field :address, class: "form-control"
+%br
+= f.label "What are your normal hours?"
+= "(example: 8 a.m. till 5 p.m."
+%br
+= f.text_field :hours_open, class: "form-control"
+%br
+= f.label "What days are you open?"
+= "(example: Mon - Fri)"
+%br
+= f.text_field :days_open, class: "form-control"
+%br
+= f.label "What months are you open?"
+= "(example: May, June, July, Year Round)"
+%br
+= f.text_field :months_open, class: "form-control"
+%br
+= f.label "Farm Phone Number"
+%br
+= f.telephone_field :phone_num, class: "form-control"
+%br
+= f.label "Farm Email Address"
+%br
+= f.email_field :email_address, class: "form-control"
+%br
+= f.submit "Add Your Farm", class: "btn btn-success btn-lg btn-block"

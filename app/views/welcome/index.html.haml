@@ -1,0 +1,17 @@
+%h2 Recently Added Farms
+%table{:class => "table table-striped table-hover"}
+	%thead
+		%th Name
+		%th Address
+		%th Days Open
+		%th Hours Open
+		%th Phone Number
+	%tbody
+		- @recent_farms.each do |f|
+			%tr
+				%td
+					= link_to f.name, farm_path(f), method: "get"
+				%td= f.address
+				%td= f.days_open
+				%td= f.hours_open
+				%td= f.phone_num
