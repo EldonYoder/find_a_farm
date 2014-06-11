@@ -44,3 +44,33 @@
  .directions_div {
  	text-align: center;
  }
+
+ .mod_overlay {
+	width: 150%;
+	height: 2500px;
+	background-color: gray;
+	display: none;
+	position: fixed;
+	z-index: 9;
+	opacity: 0.8;
+	top: -250px;
+	left: -200px;
+}
+
+.add_new_link {
+	width: 40%;
+	height: 475px;
+	top: 9%;
+	left: 30%;
+	margin-top: 100px;
+	position: fixed;
+	background-color: #18bc9c;
+	border-radius: 5px;
+	z-index: 11;
+	display: none;
+}
+
+.add_new_link_inside {
+	width: 90%;
+	margin-left: 5%;
+}
