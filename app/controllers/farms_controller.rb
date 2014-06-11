@@ -4,6 +4,12 @@ class FarmsController < ApplicationController
 	#GET "/farms/:id"
 	def show
 		@farm = Farm.find(params[:id])
+		@hash = Gmaps4rails.build_markers(@farm) do |farm, marker|
+		  marker.lat farm.latitude
+		  marker.lng farm.longitude
+		  marker.infowindow farm.name
+		  marker.json({ title: farm.name })
+		end
 	end
 
 	#GET "/farms/:id/edit"

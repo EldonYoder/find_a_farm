@@ -26,8 +26,11 @@ group :test do
 	gem "factory_girl_rails"
 end
 
-gem "geocoder"
-
 group :development do 
 	gem 'annotate', ">=2.6.0"
 end
+
+
+#Map Stuff
+gem "geocoder"
+gem 'gmaps4rails'

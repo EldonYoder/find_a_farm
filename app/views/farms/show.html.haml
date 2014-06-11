@@ -1,31 +1,38 @@
-%h1= @farm.name
+.col-md-8.col-md-offset-2
+	%div{style: "width: 100%;"}
+		#map{style: "width: 100%; height: 400px;"}
+			= render "/welcome/home_map"
 
-= image_tag "http://maps.google.com/maps/api/staticmap?size=700x350&sensor=false&zoom=16&markers=#{@farm.latitude}%2C#{@farm.longitude}"
-%br
-= @farm.description
-%br
-= @farm.address
-%br
-= @farm.latitude
-%br
-= @farm.longitude
-%br
-= @farm.hours_open
-%br
-= @farm.days_open
-%br
-= @farm.months_open
-%br
-= @farm.phone_num
-%br
-= @farm.user.name
-%br
-= @farm.email_address
+	%h1= @farm.name
 
-%br
-- if current_user	
-	- if current_user.id == @farm.user_id
-		= button_to "Edit this Farm", edit_farm_path(@farm), method: "get", class: "btn btn-warning btn-lg"
-		%br
-		%br
-= render "/layouts/footer"
+	%br
+	= @farm.description
+	%br
+	= @farm.address
+	%br
+	= link_to "Get Directions", "https://www.google.com/maps/place/#{@farm.address}", :target => "_blank"
+	= "(opens in new tab)"
+	%br
+	= @farm.latitude
+	%br
+	= @farm.longitude
+	%br
+	= @farm.hours_open
+	%br
+	= @farm.days_open
+	%br
+	= @farm.months_open
+	%br
+	= @farm.phone_num
+	%br
+	= @farm.user.name
+	%br
+	= @farm.email_address
+
+	%br
+	- if current_user	
+		- if current_user.id == @farm.user_id
+			= button_to "Edit this Farm", edit_farm_path(@farm), method: "get", class: "btn btn-warning btn-lg"
+			%br
+			%br
+	= render "/layouts/footer"
