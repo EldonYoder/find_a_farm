@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources :farms
   resources :links
+  resources :comments
  
 end
