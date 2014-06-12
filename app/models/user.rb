@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
   has_many :farms
+  has_many :comments
 
   devise :database_authenticatable, :registerable, :trackable, :validatable
   validates_presence_of :name

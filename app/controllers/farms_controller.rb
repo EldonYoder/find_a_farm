@@ -14,6 +14,7 @@ class FarmsController < ApplicationController
 		end
 
 		@links = @farm.links
+		@comments = @farm.comments
 	end
 
 	#GET "/farms/:id/edit"

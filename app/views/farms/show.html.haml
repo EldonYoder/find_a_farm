@@ -43,9 +43,32 @@
 
 .col-md-8.col-md-offset-2
 
-	- if current_user	
-		- if current_user.id == @farm.user_id
-			.edit_farm_button{id: "edit_farm_button"}
-				= button_to "Edit this Farm", edit_farm_path(@farm), method: "get", class: "btn btn-warning"
+
+	%h2 Comments
+
+	- @comments.each do |c|
+		%strong= "#{c.user.name}: " if c.user 
+		= c.content.to_s
+		- if current_user.id == c.user_id
+			= link_to "Delete", comment_path(c), method: "delete"
+		%br
+		%br
+	%br
+
+	%h2 Add A Comment
+	- if current_user
+		= form_for Comment.new, url: "/comments", method: :post do |f|
+			= f.hidden_field :farm_id, value: @farm.id
+			= f.text_area :content, class: "form-control"
+			%br
+			= f.submit "Add Comment", :class => "btn btn-success btn-block"
+		%br
+		%br	
 
 	= render "/layouts/footer"
+
+
+- if current_user	
+	- if current_user.id == @farm.user_id
+		.edit_farm_button{id: "edit_farm_button"}
+			= button_to "Edit this Farm", edit_farm_path(@farm), method: "get", class: "btn btn-warning"
