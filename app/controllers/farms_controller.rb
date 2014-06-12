@@ -19,6 +19,7 @@ class FarmsController < ApplicationController
 	#GET "/farms/:id/edit"
 	def edit
 		@farm = Farm.find(params[:id])
+		@links = @farm.links
 	end
 
 	#PUT/PATCH "/farms/:id"

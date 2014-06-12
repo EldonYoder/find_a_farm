@@ -1,0 +1,16 @@
+.col-md-6.col-md-offset-3
+	%h3 Edit the following link
+	= form_for @link do |l|
+		= l.label "Link Name"
+		%br
+		= "example: twitter, facebook, website"
+		%br
+		= l.text_field :name, class: "form-control"
+		%br
+		= l.label "Full URL"
+		%br
+		= "example: https://www.facebook.com/yourpage"
+		%br
+		= l.text_field :url, class: "form-control"
+		%br
+		= l.submit "Update Link", class: "btn btn-info btn-lg btn-block"

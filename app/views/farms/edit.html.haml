@@ -1,4 +1,7 @@
 .col-md-6.col-md-offset-3
+	
+	= button_to "Go Back to Farm", farm_path(@farm), method: "get", class: "btn btn-success btn-block"
+
 	%h1 Edit This Farm
 
 	= form_for @farm do |f|
@@ -7,3 +10,52 @@
 		= f.submit "Update Your Farm", class: "btn btn-success btn-lg btn-block"
 	%br
 	%br
+
+	%h2 Add Links To This Farm
+	= "If you've made updates above, go ahead and update the farm before adding links."
+
+	%h3 Current Links
+	%table{:class => "table table-striped table-hover"}
+		%thead
+			%th Link Name
+			%th Link URL
+			%th Edit / Delete
+		%tbody
+			- @links.each do |l|
+				%tr
+					%td= l.name
+					%td= l.url
+					%td
+						= link_to "Edit", edit_link_path(l)
+						="/"
+						= link_to "Delete", link_path(l), method: "delete"
+		
+
+	%br
+	%button{id: "farm_link_button", class: "btn btn-warning btn-lg btn-block"}
+		Add Link to this Farm
+
+.mod_overlay{:id => "mod_overlay"}
+.add_new_link{:id => "add_new_link"}
+	.add_new_link_inside{:id => "add_new_link_inside"}
+		%h3 Add A Link to this Farm
+		= form_for Link.new do |l|
+			= l.hidden_field :farm_id, value: @farm.id
+			= l.label "Link Name"
+			%br
+			= "example: twitter, facebook, website"
+			%br
+			= l.text_field :name, class: "form-control"
+			%br
+			= l.label "Full URL"
+			%br
+			= "example: https://www.facebook.com/yourpage"
+			%br
+			= l.text_field :url, class: "form-control"
+			%br
+			= l.submit "Add Link", class: "btn btn-info btn-lg btn-block"
+			%br
+		%button.btn.btn-default.btn-lg.btn-block{:id => "close_new_q_modal"}
+			Close
+.col-md-6.col-md-offset-3
+	= render "/layouts/footer"
