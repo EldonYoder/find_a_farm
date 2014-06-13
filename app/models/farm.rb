@@ -24,6 +24,7 @@ class Farm < ActiveRecord::Base
 	has_many :links
 	has_many :comments
 	has_many :ratings, as: :rateable
+	has_many :connections
 
 	validates_presence_of :name, :description, :address, :hours_open, :days_open, :months_open, :phone_num
 

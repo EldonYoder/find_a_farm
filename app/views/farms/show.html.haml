@@ -1,8 +1,11 @@
+%div{style: "width:100%;"}
+	#map{style: "width: 100%; height: 300px;"}
+		= render "farm_map"
+
 .col-md-8.col-md-offset-2
 	.directions_div
-		= link_to "Get Directions", "https://www.google.com/maps/place/#{@farm.address}", :target => "_blank", class: "btn", method: "get"
-		%br
-		= "(opens in new window)"
+		= link_to "Get Directions in New Window", "https://www.google.com/maps/place/#{@farm.address}", :target => "_blank", class: "btn", method: "get"
+		= render "follow_farm"
 	
 	%h1= @farm.name
 
