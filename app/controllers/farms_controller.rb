@@ -49,7 +49,7 @@ class FarmsController < ApplicationController
 			gflash notice: "Welcome to the family! We are glad you've chosen us to help represent your farm."
 			redirect_to farm_path(@farm)
 		else
-			gflash notice: "There was an error adding your farm. Please make sure you filled everything out."
+			gflash :now, notice: "There was an error adding your farm. Please make sure you filled everything out."
 			render :back
 		end
 	end

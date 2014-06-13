@@ -79,3 +79,9 @@
 .big_rating {
 	font-size: 35px;
 }
+
+.navbar {
+	position: relative;
+	min-height: 60px;
+	margin-bottom: 0px 
+}

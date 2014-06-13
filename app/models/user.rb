@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   
   has_many :farms
   has_many :comments
+  has_many :connections
 
   devise :database_authenticatable, :registerable, :trackable, :validatable
   validates_presence_of :name

@@ -7,12 +7,8 @@
     %script{src: "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", type: "text/javascript"}
     = csrf_meta_tags
   %body
-    
-    %div{style: "width:100%;"}
-      #map{style: "width: 100%; height: 400px;"}
-        = render "/layouts/home_map"
-    = render "/layouts/nav_bar"
     = js extend_gritter :fade_in_speed => "slow", :fade_out_speed => 2500, :time => 2500, :position => :top_right
     = gflash
-    .ey_container
-      = yield
+    = render "/layouts/nav_bar"
+    
+    = yield

@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :links
   resources :comments
   resources :ratings
+  resources :connections
  
 end

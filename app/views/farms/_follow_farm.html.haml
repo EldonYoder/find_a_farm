@@ -1,0 +1,5 @@
+%br
+= form_for Connection.new, url: "/connections", method: :post do |c|
+	= c.hidden_field :farm_id, value: @farm.id
+	= c.hidden_field :user_id, value: current_user.id
+	= c.submit "Follow this Farm!", :class => "btn btn-success"

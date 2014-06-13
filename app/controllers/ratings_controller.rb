@@ -23,7 +23,7 @@ class RatingsController < ApplicationController
 	def previous_rating(rating)
 		@rating = rating
 		@rating_2 = Rating.where(user_id: current_user.id, rateable_type: @rating.rateable_type, rateable_id: @rating.rateable_id)
-		if @rating_2.length == 1
+		if @rating_2.length >= 1
 			return true
 		else
 			return false
