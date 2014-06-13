@@ -11,6 +11,15 @@ class CommentsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@comment = Comment.find(params[:id])
+		if @comment.destroy
+			redirect_to farm_path(@comment.farm.id), notice: "comment deleted..."
+		else
+			redirect_to farm_path(@comment.farm.id), notice: "unable to delete comment, please try again!"
+		end
+	end
+
 	private
 
 	def comment_params
