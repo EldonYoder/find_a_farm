@@ -1,0 +1,20 @@
+%h2 Add A Rating
+= form_for Rating.new, url: "/ratings", method: :post do |r|
+	= r.hidden_field :rateable_id, value: @farm.id
+	= r.hidden_field :rateable_type, value: "Farm"
+	%i= "Have you visited this farm?"
+	%br
+	= r.label "Yes"
+	= r.radio_button :has_visited, true
+	%br
+	= r.label "No"
+	= r.radio_button :has_visited, false
+	%br
+	= r.label "Select a Rating 1 being bad and 10 being really great!"
+	%br
+	= r.select :rate_value, options_for_select(1..10)
+	%br
+	%br
+	= r.submit "Add Rating", :class => "btn btn-success btn-block"
+%br
+%br
