@@ -1,22 +1,28 @@
 class CommentsController < ApplicationController
 	before_action :authenticate_user!
 
+	# POST "/comments"
 	def create
 		@comment = Comment.new(comment_params)
 		@comment.user_id = current_user.id
 		if @comment.save
-			redirect_to :back, notice: "comment added."
+			gflash  notice: "comment added."
+			redirect_to :back
 		else
-			redirect_to :back, notice: "error adding comment"
+			gflash notice: "error adding comment"
+			redirect_to :back 
 		end
 	end
 
+	#DELETE "comments/:id"
 	def destroy
 		@comment = Comment.find(params[:id])
 		if @comment.destroy
-			redirect_to farm_path(@comment.farm.id), notice: "comment deleted..."
+			gflash notice: "comment deleted..."
+			redirect_to farm_path(@comment.farm.id) 
 		else
-			redirect_to farm_path(@comment.farm.id), notice: "unable to delete comment, please try again!"
+			gflash notice: "unable to delete comment, please try again!"
+			redirect_to farm_path(@comment.farm.id) 
 		end
 	end
 

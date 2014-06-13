@@ -16,4 +16,5 @@
 //= require underscore
 //= require gmaps/google
 //= require farms
+//= require gritter
 //= require_tree .

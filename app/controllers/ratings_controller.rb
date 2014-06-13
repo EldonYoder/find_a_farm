@@ -5,12 +5,15 @@ class RatingsController < ApplicationController
 		@rating.user_id = current_user.id
 
 		if previous_rating(@rating) == true
-			redirect_to :back, notice: "You can only rate a farm once."
+			gflash :notice => "You can only rate a farm once."
+			redirect_to :back
 		else
 			if @rating.save
-				redirect_to :back, notice: "Your feedback has been recorded. Thanks for your input!"
+				gflash notice: "Your feedback has been recorded. Thanks for your input!"
+				redirect_to :back
 			else
-				redirect_to :back, notice: "There was an error while saving your feedback. Please try again."
+				gflash notice: "There was an error while saving your feedback. Please try again."
+				redirect_to :back
 			end
 		end
 	end

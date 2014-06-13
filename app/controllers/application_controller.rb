@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # Added :name to devise create and update actions
   def configure_permitted_parameters
 
     devise_parameter_sanitizer.for(:sign_up) do |u|
