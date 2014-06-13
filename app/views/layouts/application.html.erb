@@ -9,6 +9,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div style="width:100%;">
+	<div id="map" style="width: 100%; height: 400px;">
+		<%= render "/layouts/home_map" %>
+	</div>
+</div>
 <%= render "/layouts/nav_bar" %>
 	<p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
