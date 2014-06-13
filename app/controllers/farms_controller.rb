@@ -15,6 +15,7 @@ class FarmsController < ApplicationController
 
 		@links = @farm.links
 		@comments = @farm.comments
+		@rating = Rating.where(rateable_type: "Farm", rateable_id: @farm.id).average(:rate_value)
 	end
 
 	#GET "/farms/:id/edit"

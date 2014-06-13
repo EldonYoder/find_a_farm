@@ -43,6 +43,14 @@
 
 .col-md-8.col-md-offset-2
 
+	%h2 User Ratings
+	- if @rating.present?
+		%i= "From 1 to 10"
+		%br
+		%strong{class: "big_rating"}= @rating
+	- else
+		= "No one has rated this farm yet."
+
 	- if current_user
 		= render "rating_form"	
 
