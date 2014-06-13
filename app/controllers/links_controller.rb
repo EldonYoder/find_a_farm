@@ -8,27 +8,33 @@ class LinksController < ApplicationController
 	def update
 		@link = Link.find(params[:id])
 		if @link.update_attributes(link_params)
-			redirect_to edit_farm_path(@link.farm), notice: "Link updated."
+			gflash notice: "Link updated."
+			redirect_to edit_farm_path(@link.farm)
 		else
-			render :back, notice: "Error updating link."
+			gflash notice: "Error updating link."
+			render :back
 		end
 	end
 
 	def create
 		@link = Link.new(link_params)
 		if @link.save
-			redirect_to edit_farm_path(@link.farm_id), notice: "Link added."
+			gflash notice: "Link added."
+			redirect_to edit_farm_path(@link.farm_id)
 		else
-			redirect_to edit_farm_path(@link.farm_id), notice: "Error creating link. Please try again."
+			gflash notice: "Error creating link. Please try again."
+			redirect_to edit_farm_path(@link.farm_id)
 		end
 	end
 
 	def destroy
 		@link = Link.find(params[:id])
 		if @link.delete
-			redirect_to edit_farm_path(@link.farm), notice: "Link Deleted"
+			gflash notice: "Link Deleted"
+			redirect_to edit_farm_path(@link.farm)
 		else
-			redirect_to edit_farm_path(@link.farm), notice: "Error Deleteing Link, please try agin."
+			gflash notice: "Error Deleteing Link, please try agin."
+			redirect_to edit_farm_path(@link.farm)
 		end
 	end
 

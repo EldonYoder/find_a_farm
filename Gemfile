@@ -31,6 +31,9 @@ group :development do
 end
 
 
+#notifications
+gem "gritter", "1.1.0"
+
 #Map Stuff
 gem "geocoder"
 gem 'gmaps4rails'

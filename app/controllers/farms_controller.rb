@@ -28,9 +28,11 @@ class FarmsController < ApplicationController
 	def update
 		@farm = Farm.find(params[:id])
 		if @farm.update_attributes(farm_params)
-			redirect_to farm_path(@farm), notice: "#{@farm.name} updated successfully."
+			gflash notice: "#{@farm.name} updated successfully."
+			redirect_to farm_path(@farm)
 		else
-			render edit_farm_path(@farm), notice: "Error updating farm."
+			gflash notice: "Error updating farm."
+			render edit_farm_path(@farm) 
 		end
 	end
 
@@ -44,9 +46,11 @@ class FarmsController < ApplicationController
 		@farm = Farm.new(farm_params)
 		@farm.user_id = current_user.id
 		if @farm.save
-			redirect_to farm_path(@farm), notice: "Welcome to the family! We are glad you've chosen us to help represent your farm."
+			gflash notice: "Welcome to the family! We are glad you've chosen us to help represent your farm."
+			redirect_to farm_path(@farm)
 		else
-			render :back, notice: "There was an error adding your farm. Please make sure you filled everything out."
+			gflash notice: "There was an error adding your farm. Please make sure you filled everything out."
+			render :back
 		end
 	end
 

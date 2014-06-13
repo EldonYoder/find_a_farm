@@ -64,6 +64,7 @@ GEM
       railties (>= 3.0.0)
     geocoder (1.2.1)
     gmaps4rails (2.1.2)
+    gritter (1.1.0)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -176,6 +177,7 @@ DEPENDENCIES
   factory_girl_rails
   geocoder
   gmaps4rails
+  gritter (= 1.1.0)
   haml
   i18n (= 0.6.9)
   jbuilder (~> 2.0)
