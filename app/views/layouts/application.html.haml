@@ -10,5 +10,6 @@
     = js extend_gritter :fade_in_speed => "slow", :fade_out_speed => 2500, :time => 2500, :position => :top_right
     = gflash
     = render "/layouts/nav_bar"
-    
     = yield
+    %p.notice= notice
+    %p.alert= alert
