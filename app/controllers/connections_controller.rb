@@ -11,7 +11,7 @@ class ConnectionsController < ApplicationController
 				gflash notice: "You are now following this farm!"
 				redirect_to :back
 			else
-				gflash notice: "Error following this farm. Please try later."
+				gflash notice: "Error following this farm. Please try later or log in."
 				redirect_to :back
 			end
 		end

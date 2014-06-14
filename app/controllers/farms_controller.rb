@@ -18,6 +18,13 @@ class FarmsController < ApplicationController
 		@rating = Rating.where(rateable_type: "Farm", rateable_id: @farm.id).average(:rate_value)
 	end
 
+	#GET "/farms/:id/followers"
+	def followers
+		@farm = Farm.find(params[:id])
+		@connections = @farm.connections
+		@followers = find_followers(@connections)
+	end
+
 	#GET "/farms/:id/edit"
 	def edit
 		@farm = Farm.find(params[:id])
@@ -55,6 +62,17 @@ class FarmsController < ApplicationController
 	end
 
 	private
+
+	def find_followers(connections)
+		@connections = connections
+		@users = []
+
+		@connections.each do |c|
+			d = User.where(id: c.user_id)
+			@users << d[0]
+		end
+		@users
+	end
 
 	def farm_params
 		params.require(:farm).permit!

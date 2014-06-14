@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
 
   # Added :name to devise create and update actions
   def configure_permitted_parameters
-
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:name, :email, :password, :password_confirmation)
     end
@@ -17,6 +16,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update)do |u|
       u.permit(:name, :email, :password, :password_confirmation, :current_password)
     end
-
   end 
+
+  # redirect to this page after login
+  def after_sign_in_path_for(resource)
+    "/users/#{current_user.id}"
+  end
 end

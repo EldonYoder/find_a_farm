@@ -6,6 +6,8 @@
       - if current_user
         %li
           %a{href: "/farms/new"} Add A Farm
+        %li
+          %a{href: "/users/#{current_user.id}"} Your Farms
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
         %li
