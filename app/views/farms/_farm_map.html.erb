@@ -6,5 +6,6 @@ handler.buildMap({
   markers = handler.addMarkers(<%=raw @hash.to_json %>);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+  handler.getMap().setZoom(16);
 });
 </script>

@@ -21,25 +21,40 @@ class FarmsController < ApplicationController
 	#GET "/farms/:id/followers"
 	def followers
 		@farm = Farm.find(params[:id])
-		@connections = @farm.connections
-		@followers = find_followers(@connections)
+		if is_owner(@farm)
+			@connections = @farm.connections
+			@followers = find_followers(@connections)
+		else
+			gflash notice: "You don't have permission to go there."
+			redirect_to farm_path(@farm)
+		end
 	end
 
 	#GET "/farms/:id/edit"
 	def edit
 		@farm = Farm.find(params[:id])
-		@links = @farm.links
+		if is_owner(@farm)	
+			@links = @farm.links
+		else
+			gflash notice: "You don't have permission to go there."
+			redirect_to farm_path(@farm)
+		end
 	end
 
 	#PUT/PATCH "/farms/:id"
 	def update
 		@farm = Farm.find(params[:id])
-		if @farm.update_attributes(farm_params)
-			gflash notice: "#{@farm.name} updated successfully."
+		if is_owner(@farm)
+			if @farm.update_attributes(farm_params)
+				gflash notice: "#{@farm.name} updated successfully."
+				redirect_to farm_path(@farm)
+			else
+				gflash notice: "Error updating farm."
+				render edit_farm_path(@farm) 
+			end
+		else 
+			gflash notice: "You don't have permission to go there."
 			redirect_to farm_path(@farm)
-		else
-			gflash notice: "Error updating farm."
-			render edit_farm_path(@farm) 
 		end
 	end
 
@@ -62,6 +77,15 @@ class FarmsController < ApplicationController
 	end
 
 	private
+
+	def is_owner(farm)
+		@farm = farm
+		if current_user.id == @farm.user_id
+			return true
+		else
+			return false
+		end
+	end
 
 	def find_followers(connections)
 		@connections = connections
