@@ -1,4 +1,6 @@
 .col-md-8.col-md-offset-2
+	%br
+	= button_to "Go Back to Farm", farm_path(@farm), method: "get", class: "btn btn-success btn-block"
 	%h1 All Users Who Follow You
 	%table{:class => "table table-striped table-hover"}
 		%thead

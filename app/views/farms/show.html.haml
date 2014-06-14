@@ -81,3 +81,5 @@
 	- if current_user.id == @farm.user_id
 		.edit_farm_button{id: "edit_farm_button"}
 			= button_to "Edit this Farm", edit_farm_path(@farm), method: "get", class: "btn btn-warning"
+			= button_to "Your Followers", "/farms/#{@farm.id}/followers", method: "get", class: "btn btn-warning"
+			
