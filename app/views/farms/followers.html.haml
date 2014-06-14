@@ -1,0 +1,17 @@
+.col-md-8.col-md-offset-2
+	%h1 All Users Who Follow You
+	%table{:class => "table table-striped table-hover"}
+		%thead
+			%th Name
+			%th Email
+		%tbody
+			- @followers.each do |f|
+				%tr
+					%td= f.name
+					%td 
+						= mail_to f.email
+
+	%h2 Contact List
+	- @followers.each do |e|
+		= e.email
+		= ","

@@ -12,4 +12,6 @@
 class Connection < ActiveRecord::Base
 	belongs_to :farm
 	belongs_to :user
+
+	validates_presence_of :user_id, :farm_id
 end
