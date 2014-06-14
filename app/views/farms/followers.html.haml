@@ -7,13 +7,13 @@
 			%th Name
 			%th Email
 		%tbody
-			- @followers.each do |f|
+			- @connections.each do |f|
 				%tr
-					%td= f.name
+					%td= f.user.name
 					%td 
-						= mail_to f.email
+						= mail_to f.user.email
 
 	%h2 Contact List
-	- @followers.each do |e|
-		= e.email
+	- @connections.each do |e|
+		= e.user.email
 		= ","

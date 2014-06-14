@@ -23,7 +23,6 @@ class FarmsController < ApplicationController
 		@farm = Farm.find(params[:id])
 		if is_owner(@farm)
 			@connections = @farm.connections
-			@followers = find_followers(@connections)
 		else
 			gflash notice: "You don't have permission to go there."
 			redirect_to farm_path(@farm)
@@ -86,18 +85,7 @@ class FarmsController < ApplicationController
 			return false
 		end
 	end
-
-	def find_followers(connections)
-		@connections = connections
-		@users = []
-
-		@connections.each do |c|
-			d = User.where(id: c.user_id)
-			@users << d[0]
-		end
-		@users
-	end
-
+	
 	def farm_params
 		params.require(:farm).permit!
 	end
