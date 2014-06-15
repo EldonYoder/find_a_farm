@@ -8,6 +8,10 @@
           %a{href: "/farms/new"} Add A Farm
         %li
           %a{href: "/users/#{current_user.id}"} Your Farms
+    = form_tag("/search", method: :get, class: " navbar-form navbar-right") do 
+      = text_field_tag :search, params[:search], placeholder: "search near", class: "form-control"
+      = submit_tag "GO", name: nil, :class => "btn btn-info"
+
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
         %li

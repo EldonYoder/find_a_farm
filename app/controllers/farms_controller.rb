@@ -75,7 +75,31 @@ class FarmsController < ApplicationController
 		end
 	end
 
+	# GET "/farms/search"
+	def search
+		if params[:search].present?
+			@farms = Farm.near(params[:search], 100)
+			if @farms.present?
+				search_map(@farms)
+			else
+				@farms = Farm.all
+				gflash notice: "Sorry we couldn't find anything near the location you searched."
+				search_map(@farms)
+			end
+		end
+	end
+
 	private
+
+	def search_map(farms)
+		@farms = farms
+		@hash = Gmaps4rails.build_markers(@farms) do |farm, marker|
+			  marker.lat farm.latitude
+			  marker.lng farm.longitude
+			  marker.infowindow "<a href='/farms/"+"#{farm.id}"+"'>#{farm.name}, #{farm.address}</a>"
+			  marker.json({ title: farm.name, id: farm.id })
+			end
+		end
 
 	def is_owner(farm)
 		@farm = farm
