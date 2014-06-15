@@ -81,6 +81,9 @@ class FarmsController < ApplicationController
 			@farms = Farm.near(params[:search], 100)
 			if @farms.present?
 				search_map(@farms)
+			elsif @farms.empty?
+				@farms = Farm.near(params[:search], 500)
+				search_map(@farms)				
 			else
 				@farms = Farm.all
 				gflash notice: "Sorry we couldn't find anything near the location you searched."

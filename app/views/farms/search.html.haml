@@ -3,7 +3,7 @@
 		= render "/layouts/home_map"
 
 .col-md-10.col-md-offset-1			
-	%h2= "Farms Near: #{params[:search].capitalize}"
+	%h2= "Farms Near: #{params[:search].titleize}"
 	%table{:class => "table table-striped table-hover"}
 		%thead
 			%th Name
@@ -11,6 +11,7 @@
 			%th Days Open
 			%th Hours Open
 			%th Phone Number
+			%th Distance
 		%tbody
 			- @farms.each do |f|
 				%tr
@@ -20,5 +21,8 @@
 					%td= f.days_open
 					%td= f.hours_open
 					%td= f.phone_num
+					%td
+						= f.distance.round(2)
+						= "miles"
 
 	= render "/layouts/footer"
