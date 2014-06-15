@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   resources :users
 
   get "/farms/:id/followers" => "farms#followers"
+
+  get "/search" => "farms#search"
  
 end
