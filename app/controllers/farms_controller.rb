@@ -1,5 +1,5 @@
 class FarmsController < ApplicationController
-	before_action :authenticate_user!, :except => [:show]
+	before_action :authenticate_user!, :except => [:show, :search]
 
 	#GET "/farms/:id"
 	def show
@@ -84,10 +84,10 @@ class FarmsController < ApplicationController
 			elsif @farms.empty?
 				@farms = Farm.near(params[:search], 500)
 				search_map(@farms)				
-			else
-				@farms = Farm.all
-				gflash notice: "Sorry we couldn't find anything near the location you searched."
-				search_map(@farms)
+				if @farms.empty?
+					gflash notice: "Sorry we couldn't find any farms in our system near #{params[:search].titleize}."
+					redirect_to "/"
+				end
 			end
 		end
 	end
