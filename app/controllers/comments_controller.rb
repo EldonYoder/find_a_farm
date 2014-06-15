@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
 		@comment = Comment.new(comment_params)
 		@comment.user_id = current_user.id
 		if @comment.save
+			FarmMailer.comment_email(@comment).deliver
 			gflash  notice: "comment added."
 			redirect_to :back
 		else

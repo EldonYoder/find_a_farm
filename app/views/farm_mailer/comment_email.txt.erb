@@ -1,0 +1,9 @@
+"Hey there <%= @comment.farm.name} %>,"
+
+
+<%= @comment.user.name %> just posted a comment on your farm's page. Here is what they said.
+
+<%= @comment.content %>
+
+You can view it right here 
+	<%= link_to @comment.farm.name, "http://localhost:3000/farms/#{@comment.farm.id}" %>

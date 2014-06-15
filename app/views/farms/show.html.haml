@@ -23,7 +23,7 @@
 		%h4= "Find Us Elsewhere"
 		- @links.each do |l|
 			= link_to l.name, l.url, target: "_blank"
-	%h4= "Our Address"
+	%h4= "Address"
 	= @farm.address
 	%h4= "Hours Open"
 	= @farm.hours_open
@@ -58,8 +58,9 @@
 	- @comments.each do |c|
 		%strong= "#{c.user.name}: " if c.user 
 		= c.content.to_s
-		- if current_user.id == c.user_id
-			= link_to "Delete", comment_path(c), method: "delete"
+		- if current_user
+			- if current_user.id == c.user_id
+				= link_to "Delete", comment_path(c), method: "delete"
 		%br
 		%br
 	%br
