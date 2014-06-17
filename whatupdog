@@ -1,0 +1,48 @@
+Using `should` from rspec-expectations' old `:should` syntax without explicitly enabling the syntax is deprecated. Use the new `:expect` syntax or explicitly enable `:should` instead. Called from /Users/eldonyoder/ironyard/projects/find_a_farm/spec/features/authentication_spec.rb:12:in `block (2 levels) in <top (required)>'.
+--------------------------------------------------------------------------------
+Capybara::RSpecMatchers::HaveText implements a legacy RSpec matcher
+protocol. For the current protocol you should expose the failure messages
+via the `failure_message` and `failure_message_when_negated` methods.
+(Used from /Users/eldonyoder/ironyard/projects/find_a_farm/spec/features/authentication_spec.rb:19:in `block (2 levels) in <top (required)>')
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Capybara::RSpecMatchers::HaveText implements a legacy RSpec matcher
+protocol. For the current protocol you should expose the failure messages
+via the `failure_message` and `failure_message_when_negated` methods.
+(Used from /Users/eldonyoder/ironyard/projects/find_a_farm/spec/features/authentication_spec.rb:36:in `block (2 levels) in <top (required)>')
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Capybara::RSpecMatchers::HaveText implements a legacy RSpec matcher
+protocol. For the current protocol you should expose the failure messages
+via the `failure_message` and `failure_message_when_negated` methods.
+(Used from /Users/eldonyoder/ironyard/projects/find_a_farm/spec/features/authentication_spec.rb:37:in `block (2 levels) in <top (required)>')
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Capybara::RSpecMatchers::HaveText implements a legacy RSpec matcher
+protocol. For the current protocol you should expose the failure messages
+via the `failure_message` and `failure_message_when_negated` methods.
+(Used from /Users/eldonyoder/ironyard/projects/find_a_farm/spec/features/authentication_spec.rb:49:in `block (2 levels) in <top (required)>')
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Capybara::RSpecMatchers::HaveText implements a legacy RSpec matcher
+protocol. For the current protocol you should expose the failure messages
+via the `failure_message` and `failure_message_when_negated` methods.
+(Used from /Users/eldonyoder/ironyard/projects/find_a_farm/spec/features/farms_spec.rb:16:in `block (2 levels) in <top (required)>')
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Capybara::RSpecMatchers::HaveText implements a legacy RSpec matcher
+protocol. For the current protocol you should expose the failure messages
+via the `failure_message` and `failure_message_when_negated` methods.
+(Used from /Users/eldonyoder/ironyard/projects/find_a_farm/spec/features/farms_spec.rb:20:in `block (2 levels) in <top (required)>')
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Capybara::RSpecMatchers::HaveText implements a legacy RSpec matcher
+protocol. For the current protocol you should expose the failure messages
+via the `failure_message` and `failure_message_when_negated` methods.
+(Used from /Users/eldonyoder/ironyard/projects/find_a_farm/spec/features/farms_spec.rb:26:in `block (2 levels) in <top (required)>')
+--------------------------------------------------------------------------------
+
+If you need more of the backtrace for any of these deprecations to
+identify where to make the necessary changes, you can configure
+`config.raise_errors_for_deprecations!`, and it will turn the
+deprecation warnings into errors, giving you the full backtrace.

@@ -12,6 +12,13 @@ feature "Authentication" do
 		current_path.should eq("/users/#{user.id}")
 	end
 
+	scenario "should redirect to root on logout" do 
+		login(user)
+		click_link "Log Out"
+		current_path.should eq("/")
+		expect(page).to have_content("Log In")
+	end
+
 	scenario "trying to log in w/ incorrect pw" do
 		invalid_login(user)
 		current_path.should eq("/users/sign_in")
@@ -41,6 +48,8 @@ feature "Authentication" do
 
 		expect(page).to have_content("Password confirmation doesn't match Password")
 	end
+
+
 
 
 end
