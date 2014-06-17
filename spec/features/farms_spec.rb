@@ -27,13 +27,36 @@ feature "Farms" do
 
  	end
 
- 	scenario "signed in user tries to create an invalid farm" do
+ 	scenario "user adds/edits/deletes link to farm" do
 		login(user)
 
 		create_farm
 
 		click_button "Edit this Farm"
 
+		click_button "Add Link to this Farm"
+
+		fill_in "link_name", with: "Google"
+		fill_in "link_url", with: "https://www.google.com/"
+
+		click_button "Add Link"
+
+		expect(page).to have_content("Google")
+		expect(page).to have_content("https://www.google.com/")
+
+		click_link "Edit Link"
+
+		expect(page).to have_content("Edit the following link")
+
+		fill_in "link_name", with: "Google!"
+
+		click_button "Update Link"
+
+		expect(page).to have_content("Link updated")
+
+		click_link "Delete Link"
+
+		expect(page).to have_content("Link Deleted")
 		
  	end
 
