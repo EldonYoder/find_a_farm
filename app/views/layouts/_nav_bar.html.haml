@@ -8,9 +8,6 @@
           %a{href: "/farms/new"} Add A Farm
         %li
           %a{href: "/users/#{current_user.id}"} Your Farms
-    = form_tag("/search", method: :get, class: " navbar-form navbar-right") do 
-      = text_field_tag :search, params[:search], placeholder: "city, state, zip, address", class: "form-control"
-      = submit_tag "Find Farms", name: nil, :class => "btn btn-info"
 
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
@@ -23,3 +20,10 @@
           = link_to "Sign Up", new_user_registration_path
         %li
           = link_to "Log In", new_user_session_path
+
+    .ey_nav_div
+      = form_tag("/search", method: :get, class: " navbar-form") do 
+        = text_field_tag :search, params[:search], placeholder: "city, state, zip, address", class: "form-control"
+        = select_tag :miles, options_for_select([["within 100 miles", "100"], ["within 250 miles", "250"], ["within 500 miles", "500"]]), class: "form-control"
+
+        = submit_tag "Find Farms", name: nil, :class => "btn btn-info"

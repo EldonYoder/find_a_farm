@@ -77,23 +77,27 @@ class FarmsController < ApplicationController
 
 	# GET "/farms/search"
 	def search
-		if params[:search].present?
-			@farms = Farm.near(params[:search], 100)
-			if @farms.present?
+		@location = params[:search]
+		@distance = params[:miles]
+		@farms = Farm.near(@location, @distance)
+
+		if @location.empty?
+			gflash notice: "You can't search without a search term; please enter a location and retry!"
+			redirect_to "/"
+		else
+			if @farms.length < 1
+				gflash notice: "Sorry! We couldn't find any farms within #{@distance} of #{@location}."
+				redirect_to "/"
+			else
 				search_map(@farms)
-			elsif @farms.empty?
-				@farms = Farm.near(params[:search], 500)
-				search_map(@farms)				
-				if @farms.empty?
-					gflash notice: "Sorry we couldn't find any farms in our system near #{params[:search].titleize}."
-					redirect_to "/"
-				end
 			end
 		end
+
 	end
 
 	private
 
+	# sets up the map hash for gmaps4rails
 	def search_map(farms)
 		@farms = farms
 		@hash = Gmaps4rails.build_markers(@farms) do |farm, marker|
