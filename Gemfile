@@ -20,14 +20,14 @@ gem 'devise'
 gem 'nokogiri', '1.5.10'
 gem 'i18n', '0.6.9'
 
-group :test do 
-	gem "rspec-rails"
-	gem "capybara"
-	gem "factory_girl_rails"
-end
-
 group :development do 
 	gem 'annotate', ">=2.6.0"
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem "capybara"
+	gem "factory_girl_rails"
 end
 
 
