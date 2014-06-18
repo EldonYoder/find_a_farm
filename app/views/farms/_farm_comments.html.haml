@@ -1,0 +1,28 @@
+- if @comments.empty?
+	= "Be the first to leave a comment!"
+	- if current_user == nil
+		= link_to "Sign Up", "/users/sign_up", method: "get"
+		= "/"
+		= link_to "Sign In", "/users/sign_in", method: "get"
+- else
+	- @comments.each do |c|
+		%strong= "#{c.user.name}: " if c.user 
+		= c.content.to_s
+		- if current_user
+			- if current_user.id == c.user_id
+				= link_to "Delete", comment_path(c), method: "delete"
+
+	- if current_user == nil
+		= "Join the conversation!"
+		= link_to "Sign Up", "/users/sign_up", method: "get"
+		= "/"
+		= link_to "Sign In", "/users/sign_in", method: "get"
+%br
+
+- if current_user
+	%h2 Add A Comment
+	= form_for Comment.new, url: "/comments", method: :post do |f|
+		= f.hidden_field :farm_id, value: @farm.id
+		= f.text_area :content, class: "form-control"
+		%br
+		= f.submit "Add Comment", :class => "btn btn-success btn-block"

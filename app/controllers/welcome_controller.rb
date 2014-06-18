@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 	
 	#GET "/"
 	def index
-		@recent_farms = Farm.last(10)
+		@recent_farms = Farm.all
 		create_markers
 	end
 

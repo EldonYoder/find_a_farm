@@ -6,12 +6,15 @@
 		%thead
 			%th Name
 			%th Email
+			%th Delete Connection
 		%tbody
 			- @connections.each do |f|
 				%tr
 					%td= f.user.name
 					%td 
 						= mail_to f.user.email
+					%td
+						= link_to "Remove Follower", connection_path(f), method: :delete
 
 	%h2 Contact List
 	- @connections.each do |e|

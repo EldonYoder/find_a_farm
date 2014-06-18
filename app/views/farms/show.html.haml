@@ -5,7 +5,11 @@
 .col-md-8.col-md-offset-2
 	.directions_div
 		= link_to "Get Directions in New Window", "https://www.google.com/maps/place/#{@farm.address}", :target => "_blank", class: "btn", method: "get"
-		= render "follow_farm"
+		%br
+		- if has_connected(current_user, @farm)
+			= link_to "Quit Following This Farm", connection_path(@connection.first), method: :delete
+		- else
+			= render "follow_farm"
 	
 	%h1= @farm.name
 
@@ -15,9 +19,13 @@
 	%br
 	= simple_format(@farm.description)
 	%br
+	%h2 Comments
+	= render "farm_comments"
 	
 
 .col-md-2
+	%h2 User Ratings
+	= render "ratings_form"
 	%h3= "General Info"
 	- if @links.present?
 		%h4= "Find Us Elsewhere"
@@ -39,43 +47,6 @@
 	%br
 	%h4= "Email"
 	= mail_to @farm.email_address
-
-.col-md-8.col-md-offset-2
-
-	%h2 User Ratings
-	- if @rating.present?
-		%i= "From 1 to 10"
-		%br
-		%strong{class: "big_rating"}= @rating
-	- else
-		= "No one has rated this farm yet."
-
-	- if current_user
-		= render "rating_form"	
-
-	%h2 Comments
-
-	- @comments.each do |c|
-		%strong= "#{c.user.name}: " if c.user 
-		= c.content.to_s
-		- if current_user
-			- if current_user.id == c.user_id
-				= link_to "Delete", comment_path(c), method: "delete"
-		%br
-		%br
-	%br
-
-	%h2 Add A Comment
-	- if current_user
-		= form_for Comment.new, url: "/comments", method: :post do |f|
-			= f.hidden_field :farm_id, value: @farm.id
-			= f.text_area :content, class: "form-control"
-			%br
-			= f.submit "Add Comment", :class => "btn btn-success btn-block"
-		%br
-		%br	
-
-	= render "/layouts/footer"
 
 
 - if current_user	

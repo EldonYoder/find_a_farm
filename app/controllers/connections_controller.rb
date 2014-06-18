@@ -17,6 +17,18 @@ class ConnectionsController < ApplicationController
 		end
 	end
 
+	#DELETE "connections/:id"
+	def destroy
+		@connection = Connection.find(params[:id])
+		if @connection.destroy
+			gflash notice: "connection deleted..."
+			redirect_to :back 
+		else
+			gflash notice: "unable to delete connection, please try again!"
+			redirect_to :back
+		end
+	end
+
 	private
 
 	def previous_connection(connection)

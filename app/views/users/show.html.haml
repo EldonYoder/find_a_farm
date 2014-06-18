@@ -29,6 +29,7 @@
 				%th Days Open
 				%th Hours Open
 				%th Phone Number
+				%th Quit Following
 			%tbody
 				- @connections.each do |f|
 					%tr
@@ -38,5 +39,7 @@
 						%td= f.farm.days_open
 						%td= f.farm.hours_open
 						%td= f.farm.phone_num
+						%td
+							= link_to "Quit Following", connection_path(f), method: :delete
 	- else
 		%h2 You Haven't Followed any Farms Yet
