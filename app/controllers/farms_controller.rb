@@ -91,7 +91,7 @@ class FarmsController < ApplicationController
 			redirect_to "/"
 		else
 			if @farms.length < 1
-				gflash notice: "Sorry! We couldn't find any farms within #{@distance} of #{@location}."
+				gflash notice: "Sorry! We couldn't find any farms within #{@distance} miles of #{@location}."
 				redirect_to "/"
 			else
 				search_map(@farms)
