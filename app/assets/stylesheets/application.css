@@ -99,3 +99,8 @@ p.alert {
 	padding-left: 20%;
 	text-align: center;
 }
+
+
+#farm_description {
+	height: 500px;
+}
