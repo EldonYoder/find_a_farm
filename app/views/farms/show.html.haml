@@ -6,8 +6,9 @@
 	.directions_div
 		= link_to "Get Directions in New Window", "https://www.google.com/maps/place/#{@farm.address}", :target => "_blank", class: "btn", method: "get"
 		%br
-		- if has_connected(current_user, @farm)
-			= link_to "Quit Following This Farm", connection_path(@connection.first), method: :delete
+		- if current_user
+			- if has_connected(current_user, @farm)
+				= link_to "Quit Following This Farm", connection_path(@connection.first), method: :delete
 		- else
 			= render "follow_farm"
 	
@@ -24,7 +25,7 @@
 	
 
 .col-md-2
-	%h2 User Ratings
+	%h3 User Ratings
 	= render "ratings_form"
 	%h3= "General Info"
 	- if @links.present?
@@ -41,6 +42,9 @@
 	%br
 	%h4= "Months Open"
 	= @farm.months_open
+	%br
+	%h4= "Payment Types"
+	= @farm.payment_types
 	%br
 	%h4= "Phone"
 	= @farm.phone_num

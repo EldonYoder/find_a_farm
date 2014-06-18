@@ -18,7 +18,9 @@ class FarmsController < ApplicationController
 		@rating = Rating.where(rateable_type: "Farm", rateable_id: @farm.id)
 		@rating_num = @rating.length
 		@rating_average = @rating.average(:rate_value)
-		@connection = Connection.where(user_id: current_user.id, farm_id: @farm.id)
+		if current_user
+			@connection = Connection.where(user_id: current_user.id, farm_id: @farm.id)
+		end
 	end
 
 	#GET "/farms/:id/followers"

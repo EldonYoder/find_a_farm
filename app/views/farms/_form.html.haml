@@ -25,6 +25,11 @@
 %br
 = f.text_field :months_open, class: "form-control"
 %br
+= f.label "What forms of payment do you accept?"
+= "(cash, credit, check)"
+%br
+= f.text_field :payment_types, class: "form-control"
+%br
 = f.label "Farm Phone Number"
 %br
 = f.telephone_field :phone_num, class: "form-control"
