@@ -1,4 +1,4 @@
-.col-md-8.col-md-offset-2
+.col-md-10.col-md-offset-1
 	%h1 Your Farms & Connections
 
 	- if @farms.length >= 1
@@ -22,24 +22,42 @@
 
 	- if @connections.length >= 1
 		%h2 Farms You Follow
-		%table{:class => "table table-striped table-hover"}
-			%thead
-				%th Name
-				%th Address
-				%th Days Open
-				%th Hours Open
-				%th Phone Number
-				%th Quit Following
-			%tbody
-				- @connections.each do |f|
-					%tr
-						%td
-							= link_to f.farm.name, farm_path(f.farm), method: "get"
-						%td= f.farm.address
-						%td= f.farm.days_open
-						%td= f.farm.hours_open
-						%td= f.farm.phone_num
-						%td
-							= link_to "Quit Following", connection_path(f), method: :delete
+		- @connections.each do |f|
+			.col-md-4.col-sm-6
+				.farm_sum
+					.button_div.first_button
+						%h4= link_to f.farm.name.truncate(60), farm_path(f.farm), method: "get"
+						%br
+						%strong= "Address: "
+						= f.farm.address.truncate(30)
+						%br
+						%strong= "Days Open: "
+						= f.farm.days_open
+						%br
+						%strong= "Hours: "
+						= f.farm.hours_open
+						%br
+						%strong= "Phone: "
+						= f.farm.phone_num
+						%br
+						%strong= "Description: "
+						= f.farm.description.truncate(110)
+						%br
+						.ey_nav_div
+							= link_to "Quit Following This Farm", connection_path(f), method: :delete
+					.button_div.real_button_div
+						= button_to "View Farm", farm_path(f.farm), method: "get", class: "btn btn-info btn-block"
+
+
+
+			/ %tr
+			/ 	%td
+			/ 		= link_to f.farm.name, farm_path(f.farm), method: "get"
+			/ 	%td= f.farm.address
+			/ 	%td= f.farm.days_open
+			/ 	%td= f.farm.hours_open
+			/ 	%td= f.farm.phone_num
+			/ 	%td
+			/ 		= link_to "Quit Following", connection_path(f), method: :delete
 	- else
 		%h2 You Haven't Followed any Farms Yet

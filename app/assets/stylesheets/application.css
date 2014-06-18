@@ -21,7 +21,7 @@
  }
 
  body {
- 	background-color: #e8ffeb !important;
+ 	background-color: #fff !important;
  }
 
  .ey_copyright {
@@ -29,7 +29,7 @@
  	padding-top: 25px;
  	padding-bottom: 25px;
  	font-size: 16px;
- 	opacity: .5;
+ 	opacity: .3;
  }
 
  h4 {
@@ -101,4 +101,31 @@ p.alert {
 
 #farm_description {
 	height: 500px;
+}
+
+.farm_sum {
+	height: 300px;
+	border-radius: 5px;
+	border: 2px solid #18bc9c;
+	margin-top: 15px;
+}
+
+.farm_sum:hover {
+	border: 2px solid #3498db;
+	transition: border 5s ease;
+}
+
+.button_div {
+	width: 90%;
+	margin: auto;
+	padding-top: 10px;
+}
+
+.first_button {
+	height: 230px;
+}
+
+a:hover{
+	color: #3498db!important;
+	text-decoration: none!important;
 }

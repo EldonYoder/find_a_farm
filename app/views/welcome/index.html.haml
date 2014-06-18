@@ -4,19 +4,27 @@
 
 .col-md-10.col-md-offset-1			
 	%h2 Recently Added Farms
-	%table{:class => "table table-striped table-hover"}
-		%thead
-			%th Name
-			%th Address
-			%th Days Open
-			%th Hours Open
-			%th Phone Number
-		%tbody
-			- @recent_farms.each do |f|
-				%tr
-					%td
-						= link_to f.name, farm_path(f), method: "get"
-					%td= f.address
-					%td= f.days_open
-					%td= f.hours_open
-					%td= f.phone_num
+	- @recent_farms.each do |f|
+		.col-md-4.col-sm-6
+			.farm_sum
+				.button_div.first_button
+					%h4= link_to f.name.truncate(60), farm_path(f), method: "get"
+					%br
+					%strong= "Address: "
+					= f.address.truncate(30)
+					%br
+					%strong= "Days Open: "
+					= f.days_open
+					%br
+					%strong= "Hours: "
+					= f.hours_open
+					%br
+					%strong= "Phone: "
+					= f.phone_num
+					%br
+					%strong= "Description: "
+					= f.description.truncate(110)
+					%br
+					%br
+				.button_div.real_button_div
+					= button_to "View Farm", farm_path(f), method: "get", class: "btn btn-info btn-block"
