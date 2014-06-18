@@ -9,8 +9,8 @@
 		- if current_user
 			- if has_connected(current_user, @farm)
 				= link_to "Quit Following This Farm", connection_path(@connection.first), method: :delete
-		- else
-			= render "follow_farm"
+			- else
+				= render "follow_farm"
 	
 	%h1= @farm.name
 

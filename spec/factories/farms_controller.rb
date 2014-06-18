@@ -8,6 +8,7 @@ FactoryGirl.define do
 		f.days_open "Mon - Fri"
 		f.months_open "Year Round"
 		f.phone_num "(098)-234-2344"
+		f.payment_types "cash"
 		f.email_address "fakeemail@example.com"
 	end
 
