@@ -16,6 +16,7 @@
 #  updated_at    :datetime
 #  user_id       :integer
 #  email_address :string(255)
+#  payment_types :string(255)
 #
 
 class Farm < ActiveRecord::Base
@@ -26,7 +27,7 @@ class Farm < ActiveRecord::Base
 	has_many :ratings, as: :rateable
 	has_many :connections
 
-	validates_presence_of :name, :description, :address, :hours_open, :days_open, :months_open, :phone_num
+	validates_presence_of :name, :description, :address, :hours_open, :days_open, :months_open, :phone_num, :payment_types
 
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?

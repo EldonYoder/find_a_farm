@@ -1,0 +1,25 @@
+- if @rating.present?
+	%i= "Rated from 1 to 10"
+	%br
+	%strong{class: "big_rating"}= @rating_average
+	%br
+	%i= "Rated by #{@rating_num} people."
+	%br
+	- if current_user == nil
+		= "Want to rate this farm?"
+		= link_to "Sign Up", "/users/sign_up", method: "get"
+		= "/"
+		= link_to "Sign In", "/users/sign_in", method: "get"
+- else
+	= "No one has rated this farm yet."
+	- if current_user == nil
+		= "Want to rate this farm?"
+		= link_to "Sign Up", "/users/sign_up", method: "get"
+		= "/"
+		= link_to "Sign In", "/users/sign_in", method: "get"
+
+- if current_user
+	- if has_rated(current_user, @farm) == false
+		= render "rating_form"	
+	- else
+		%i= "You've already rated this farm."
