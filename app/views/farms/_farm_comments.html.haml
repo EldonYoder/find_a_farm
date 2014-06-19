@@ -11,6 +11,7 @@
 		- if current_user
 			- if current_user.id == c.user_id
 				= link_to "Delete", comment_path(c), method: "delete"
+		%br
 
 	- if current_user == nil
 		= "Join the conversation!"
