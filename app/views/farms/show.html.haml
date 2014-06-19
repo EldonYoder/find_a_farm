@@ -22,25 +22,25 @@
 	%h3= "What We Offer"
 	.col-md-3.col-sm-6
 		%h4= "Spring"
-		- if @farm.offer_spring.nil?
+		- if @farm.offer_spring.blank?
 			%strong= "Nothing"
 		- else 
 			%strong= @farm.offer_spring
 	.col-md-3.col-sm-6
 		%h4= "Summer"
-		- if @farm.offer_summer.nil?
+		- if @farm.offer_summer.blank?
 			%strong= "Nothing"
 		- else 
 			%strong= @farm.offer_summer
 	.col-md-3.col-sm-6
 		%h4= "Fall"
-		- if @farm.offer_fall.nil?
+		- if @farm.offer_fall.blank?
 			%strong= "Nothing"
 		- else 
 			%strong= @farm.offer_fall
 	.col-md-3.col-sm-6
 		%h4= "Winter"
-		- if @farm.offer_winter.nil?
+		- if @farm.offer_winter.blank?
 			%strong= "Nothing"
 		- else 
 			%strong= @farm.offer_winter
