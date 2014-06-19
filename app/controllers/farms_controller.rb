@@ -17,7 +17,7 @@ class FarmsController < ApplicationController
 		@comments = @farm.comments
 		@rating = Rating.where(rateable_type: "Farm", rateable_id: @farm.id)
 		@rating_num = @rating.length
-		@rating_average = @rating.average(:rate_value)
+		@rating_average = @rating.average(:rate_value).round(2)
 		if current_user
 			@connection = Connection.where(user_id: current_user.id, farm_id: @farm.id)
 		end
