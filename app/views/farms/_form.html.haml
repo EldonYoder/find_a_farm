@@ -1,39 +1,87 @@
 = f.label "What is the name of your farm?"
+%br 
+= "This is the title that will be shown for your farm"
 %br
 = f.text_field :name, class: "form-control"
 %br
-= f.label "Give a short description of your farm."
+= f.label "Tell us about your farm."
+%br
+= "Let people know who you are and why you do what you do. Tell them a short story." 
+%br
+= "(Try for 200-250 words.)"
 %br
 = f.text_area :description, class: "form-control"
 %br
+= f.label "What do you offer in the spring?"
+%br
+= "March, April, May (if nothing, leave blank)"
+%br
+= "example: strawberries, corn, radishes"
+%br
+= f.text_area :offer_spring, class: "form-control"
+%br
+= f.label "What do you offer in the summer?"
+%br
+= "June, July, August (if nothing, leave blank)"
+%br
+= "example: corn, peaches, greens"
+%br
+= f.text_area :offer_summer, class: "form-control"
+%br
+= f.label "What do you offer in the fall?"
+%br
+= "September, October, November (if nothing, leave blank)"
+%br
+= "example: pumpkins, corn-maze, hay-rides"
+%br
+= f.text_area :offer_fall, class: "form-control"
+%br
+= f.label "What do you offer in the winter?"
+%br
+= "December, January, February (if nothing, leave blank)"
+%br
+= "example: christmas trees, sleigh-rides, turkeys"
+%br
+= f.text_area :offer_winter, class: "form-control"
+%br
 = f.label "What is the address of the farm?"
+%br
+= "format: 1234 Some Road, City, State 10099"
 %br
 = f.text_field :address, class: "form-control"
 %br
 = f.label "What are your normal hours?"
+%br
 = "(example: 8 a.m. till 5 p.m."
 %br
 = f.text_field :hours_open, class: "form-control"
 %br
 = f.label "What days are you open?"
+%br
 = "(example: Mon - Fri)"
 %br
 = f.text_field :days_open, class: "form-control"
 %br
 = f.label "What months are you open?"
+%br
 = "(example: May, June, July, Year Round)"
 %br
 = f.text_field :months_open, class: "form-control"
 %br
 = f.label "What forms of payment do you accept?"
-= "(cash, credit, check)"
+%br
+= "(cash, credit, check, dish washing)"
 %br
 = f.text_field :payment_types, class: "form-control"
 %br
 = f.label "Farm Phone Number"
 %br
+= "format: (000)-000-0000"
+%br
 = f.telephone_field :phone_num, class: "form-control"
 %br
 = f.label "Farm Email Address"
+%br
+= "Use a valid email. Customers will contact you this way and it is also how you will be notified of comments on your farm."
 %br
 = f.email_field :email_address, class: "form-control"
