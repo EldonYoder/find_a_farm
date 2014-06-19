@@ -18,5 +18,4 @@
 
 	%h2 Contact List
 	- @connections.each do |e|
-		= e.user.email
-		= ","
+		= "#{e.user.email}, "
