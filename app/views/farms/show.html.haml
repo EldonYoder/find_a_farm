@@ -51,8 +51,6 @@
 	
 
 .col-md-2
-	%h3 User Ratings
-	= render "ratings_form"
 	%h3= "General Info"
 	- if @links.present?
 		%h4= "Find Us Elsewhere"
@@ -77,6 +75,8 @@
 	%br
 	%h4= "Email"
 	= mail_to @farm.email_address
+	%h3 User Ratings
+	= render "ratings_form"
 
 
 - if current_user	
