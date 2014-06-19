@@ -76,7 +76,7 @@ class FarmsController < ApplicationController
 			redirect_to farm_path(@farm)
 		else
 			gflash :now, notice: "There was an error adding your farm. Please make sure you filled everything out."
-			render :back
+			render :new
 		end
 	end
 
