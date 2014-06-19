@@ -17,6 +17,10 @@
 #  user_id       :integer
 #  email_address :string(255)
 #  payment_types :string(255)
+#  offer_spring  :string(255)
+#  offer_summer  :string(255)
+#  offer_fall    :string(255)
+#  offer_winter  :string(255)
 #
 
 class Farm < ActiveRecord::Base
