@@ -4,7 +4,8 @@
 
 .col-md-8.col-md-offset-2
 	.directions_div
-		= link_to "Get Directions in New Window", "https://www.google.com/maps/place/#{@farm.address}", :target => "_blank", class: "btn", method: "get"
+		%br
+		= link_to "Get Directions", "https://www.google.com/maps/place/#{@farm.address}", :target => "_blank"
 		%br
 		- if current_user
 			- if has_connected(current_user, @farm)
