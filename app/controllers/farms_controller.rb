@@ -104,6 +104,10 @@ class FarmsController < ApplicationController
 
 	end
 
+	def blog
+
+	end
+
 	private
 
 	# sets up the map hash for gmaps4rails

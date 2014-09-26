@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :ratings, only: [:create]
   resources :connections, only: [:create, :destroy]
   resources :users, only: [:show]
-
-  
+  resources :posts, only: [:show, :create, :edit, :update, :destroy, :new]
  
 end

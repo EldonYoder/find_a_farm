@@ -1,0 +1,9 @@
+.col-md-6.col-md-offset-3
+	%h1 Add A New Post to Your Farm!
+
+	= form_for @post do |f|
+		= render "form", f: f
+		%br
+		= f.submit "Save Your Post", class: "btn btn-success btn-lg btn-block"
+	%br
+	%br
