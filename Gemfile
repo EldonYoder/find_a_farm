@@ -30,6 +30,11 @@ group :development, :test do
 	gem "factory_girl_rails"
 end
 
+group :production do
+  gem 'unicorn'
+end
+
+gem 'newrelic_rpm'
 
 #notifications
 gem "gritter", "1.1.0"
